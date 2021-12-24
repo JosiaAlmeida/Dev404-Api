@@ -16,13 +16,15 @@ class TipoController{
     }
 
     async UpdateType(req:Request, res: Response){
-        const {id, type, user_id} = req.body
+        const {id, type} = req.body
+        const {user_id} = req
         const Types = await service.UpdateType({id, type, user_id})
         return res.status(200).json(Types)
     }
 
     async CreateType(req:Request, res: Response){
-        const {user_id, type} = req.body
+        const { type} = req.body
+        const {user_id} = req
         const Types = await service.createService({user_id, type})
 
         return res.status(201).json(Types)

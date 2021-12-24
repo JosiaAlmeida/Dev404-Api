@@ -16,13 +16,15 @@ class QualidadeController{
     }
 
     async UpdateQualidade(req:Request, res: Response){
-        const {id, type, user_id} = req.body
+        const {id, type} = req.body
+        const {user_id} = req
         const Qualidades = await service.UpdateType({id, type, user_id})
         return res.status(200).json(Qualidades)
     }
 
     async CreateQualidade(req:Request, res: Response){
-        const {user_id, type} = req.body
+        const {type} = req.body
+        const {user_id} = req
         const Qualidades = await service.createService({user_id, type})
 
         return res.status(201).json(Qualidades)

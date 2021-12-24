@@ -1,17 +1,18 @@
 import { Router } from "express";
 import { AparenciaController } from "../controllers/AparenciaController";
+import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerAparencia = Router()
 
 const Aparencia = new AparenciaController()
 
-routerAparencia.get('/', Aparencia.ListAll)
-routerAparencia.get('/:id', Aparencia.FindBy)
+routerAparencia.get('/',ensuredUser, Aparencia.ListAll)
+routerAparencia.get('/:id',ensuredUser, Aparencia.FindBy)
 
-routerAparencia.put('/', Aparencia.Update)
+routerAparencia.put('/',ensuredUser, Aparencia.Update)
 
-routerAparencia.post('/', Aparencia.Create)
+routerAparencia.post('/',ensuredUser, Aparencia.Create)
 
-routerAparencia.delete('/:id', Aparencia.Delete)
+routerAparencia.delete('/:id',ensuredUser, Aparencia.Delete)
 
 export {routerAparencia}

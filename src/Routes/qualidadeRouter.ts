@@ -1,17 +1,19 @@
 import { Router } from "express";
 import { QualidadeController } from "../controllers/QualidadeController";
+import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerQualidade = Router()
 
 const Qualidade = new QualidadeController()
 
-routerQualidade.get('/', Qualidade.ListAll)
-routerQualidade.get('/:id', Qualidade.FindByQualidade)
 
-routerQualidade.put('/', Qualidade.UpdateQualidade)
+routerQualidade.get('/', ensuredUser,Qualidade.ListAll)
+routerQualidade.get('/:id',ensuredUser, Qualidade.FindByQualidade)
 
-routerQualidade.post('/', Qualidade.CreateQualidade)
+routerQualidade.put('/',ensuredUser, Qualidade.UpdateQualidade)
 
-routerQualidade.delete('/:id', Qualidade.DeleteQualidade)
+routerQualidade.post('/',ensuredUser, Qualidade.CreateQualidade)
+
+routerQualidade.delete('/:id',ensuredUser, Qualidade.DeleteQualidade)
 
 export {routerQualidade}

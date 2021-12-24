@@ -1,17 +1,18 @@
 import { Router } from "express";
 import { TipoController } from "../controllers/TipoController";
+import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerType = Router()
 
 const Type = new TipoController()
 
-routerType.get('/', Type.ListAll)
-routerType.get('/:id', Type.FindByType)
+routerType.get('/',ensuredUser, Type.ListAll)
+routerType.get('/:id',ensuredUser, Type.FindByType)
 
-routerType.put('/', Type.UpdateType)
+routerType.put('/',ensuredUser, Type.UpdateType)
 
-routerType.post('/', Type.CreateType)
+routerType.post('/',ensuredUser, Type.CreateType)
 
-routerType.delete('/:id', Type.DeleteType)
+routerType.delete('/:id',ensuredUser, Type.DeleteType)
 
 export {routerType}
