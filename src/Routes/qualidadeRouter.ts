@@ -9,7 +9,7 @@ const Qualidade = new QualidadeController()
 
 
 routerQualidade.get('/',ensuredUser ,Qualidade.ListAll)
-routerQualidade.get('/:id', Qualidade.FindByQualidade)
+routerQualidade.get('/:id',ensuredUser, Qualidade.FindByQualidade)
 
 routerQualidade.put('/',ensuredUser, Qualidade.UpdateQualidade)
 

@@ -18,7 +18,19 @@ class UserOnlyNow {
         const userExists = await userRepository.findOneOrFail({
             email
         })
-        if (userExists) {
+        if (userExists.Dev === 'admin') {
+            const token = sign({
+                email: userExists.email
+            },
+                process.env.JWT_KEY_ADMIN,
+                {
+                    subject: userExists.id,
+                    expiresIn: "1d"
+                }
+            )
+            return { userExists, token }
+        }
+        else if(userExists){
             const token = sign({
                 email: userExists.email
             },

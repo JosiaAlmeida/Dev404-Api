@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-interface IPlayload{
+interface IPlayload {
     sub: string
 }
 
@@ -11,9 +11,15 @@ export async function ensuredUser(req: Request, res: Response, next: NextFunctio
     const [, token] = tokenHeader.split(' ')
     if (token) {
         try {
-            const { sub } = verify(token, process.env.JWT_KEY) as IPlayload
-
-            req.user_id = sub
+            if(verify(token, process.env.JWT_KEY) as IPlayload){
+                const { sub } = verify(token, process.env.JWT_KEY) as IPlayload
+                if (sub) req.user_id = sub
+            }
+            else if(verify(token, process.env.JWT_KEY_ADMIN) as IPlayload){
+                const { sub } = verify(token, process.env.JWT_KEY_ADMIN) as IPlayload
+                if (sub) req.user_id = sub
+            }
+            
             return next()
         } catch (error) {
             return res.status(401).json({ message: "Token invalid!" })

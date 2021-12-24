@@ -1,19 +1,19 @@
 import { Router } from "express";
 import { UserController } from "../controllers/UserController";
-import { ensuredAdmin } from "../middleware/ensuredAdmin";
+import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerUser = Router()
 
 const User = new UserController()
 
-routerUser.get('/',ensuredAdmin, User.ListUser)
+routerUser.get('/',ensuredUser, User.ListUser)
 
-routerUser.get('/:id',ensuredAdmin, User.FindById)
+routerUser.get('/:id',ensuredUser, User.FindById)
 
-routerUser.put('/',ensuredAdmin, User.Update)
+routerUser.put('/',ensuredUser, User.Update)
 
 routerUser.post('/', User.createUser)
 
-routerUser.delete('/delete/:id',ensuredAdmin, User.DeleteUser)
+routerUser.delete('/delete/:id',ensuredUser, User.DeleteUser)
 
 export {routerUser}
