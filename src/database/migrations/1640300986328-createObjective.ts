@@ -19,7 +19,7 @@ export class createObjective1640300986328 implements MigrationInterface {
                     {
                         name: "type",
                         type: "varchar",
-                        default: "null"
+                        //default: "null"
                     },
                     {
                         name: "created_at",

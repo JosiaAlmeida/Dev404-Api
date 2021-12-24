@@ -5,7 +5,7 @@ export class createPacote21640303110974 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "pacote2",
+                name: "pacote",
                 columns: [
                     {
                         name: "id",

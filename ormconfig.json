@@ -1,6 +1,6 @@
 {
     "type": "sqlite",
-    "database": "src/database/dev404.sqlite",
+    "database": "src/database/devs404.sqlite",
     "migrations":["src/database/migrations/*.ts"],
     "entities":["src/entities/*.ts"],
     "cli":{

@@ -1,8 +1,8 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn, JoinColumn } from "typeorm";
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, OneToMany, ManyToMany } from "typeorm";
 import {v4 as uuid} from 'uuid'
 import {User} from './User'
 
-Entity("aparencia")
+@Entity("aparencia")
 class Aparencia{
     @PrimaryColumn()
     readonly id: string

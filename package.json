@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "go": "ts-node-dev src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "migration":"typeorm migration:run"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

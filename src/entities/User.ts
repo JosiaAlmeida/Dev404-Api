@@ -2,7 +2,7 @@ import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn } fro
 import {v4 as uuid} from 'uuid'
 
 
-Entity("users")
+@Entity("users")
 class User{
     @PrimaryColumn()
     readonly id: string
@@ -24,6 +24,12 @@ class User{
 
     @Column()
     historia: string
+
+    @Column()
+    email: string
+
+    @Column()
+    number: string
 
     @CreateDateColumn()
     created_at: Date

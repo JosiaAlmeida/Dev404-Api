@@ -2,7 +2,7 @@ import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn, Join
 import {v4 as uuid} from 'uuid'
 import {User} from './User'
 
-Entity("pacote2")
+@Entity("pacote")
 class Pacote{
     @PrimaryColumn()
     readonly id: string
