@@ -45,8 +45,8 @@ class UserController{
 
 
     async Update(req: Request, res:Response){
-        const {id} = req.params
         const {
+            id,
             name,
             Bi,
             sexo,
@@ -75,7 +75,7 @@ class UserController{
         const {id} = req.params
         const User = await service.DistroyUser(id)
 
-        return res.status(200).json(User)
+        return res.status(204).json(User)
     }
 
 }export {UserController}

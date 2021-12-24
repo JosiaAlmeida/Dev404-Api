@@ -9,7 +9,7 @@ routerUser.get('/', User.ListUser)
 
 routerUser.get('/:id', User.FindById)
 
-routerUser.put('/:id', User.Update)
+routerUser.put('/', User.Update)
 
 routerUser.post('/', User.createUser)
 
