@@ -27,12 +27,12 @@ export class createUsers1640300932931 implements MigrationInterface {
                     {
                         name: "empresa",
                         type: "varchar",
-                        //default: "null"
+                        default: "null"
                     },
                     {
                         name: "organizacao",
                         type: "varchar",
-                        //default: "null"
+                        default: "null"
                     },
                     {
                         name: "historia",

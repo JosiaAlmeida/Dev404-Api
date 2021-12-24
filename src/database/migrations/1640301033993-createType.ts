@@ -19,7 +19,7 @@ export class createType1640301033993 implements MigrationInterface {
                     {
                         name: "type",
                         type: "varchar",
-                        //default: "null"
+                        default: "null"
                     },
                     {
                         name: "created_at",
