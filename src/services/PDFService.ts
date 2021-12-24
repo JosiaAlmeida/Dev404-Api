@@ -5,6 +5,7 @@ import { PacoteRepositories } from '../Repositories/PacoteRepositories';
 import { QualidadeRepositories } from '../Repositories/QualidadeRepositories';
 import { TipoRepositories } from '../Repositories/TipoRepositories';
 import { UserRepositories } from '../Repositories/UserRepositories';
+import { ActionsUserServices } from './ActionsUserServices';
 
 
 class PDFService{
@@ -16,7 +17,7 @@ class PDFService{
         const objetivoRepo = getCustomRepository(ObjetivoRepositories)
         const aparenciaRepo = getCustomRepository(AparenciaRepositories)
 
-        
+        const Service = new ActionsUserServices()
 
 
     }
