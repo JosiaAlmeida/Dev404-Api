@@ -15,9 +15,6 @@ class Pacote{
     userId: User
 
     @Column()
-    type: string
-
-    @Column()
     name: string
     
     @Column()
