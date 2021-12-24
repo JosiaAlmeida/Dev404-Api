@@ -14,6 +14,9 @@ class User{
     Bi:string
 
     @Column()
+    Dev: string
+
+    @Column()
     sexo: string
 
     @Column()

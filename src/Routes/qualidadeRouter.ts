@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { QualidadeController } from "../controllers/QualidadeController";
+import { ensuredAdmin } from "../middleware/ensuredAdmin";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerQualidade = Router()
@@ -7,8 +8,8 @@ const routerQualidade = Router()
 const Qualidade = new QualidadeController()
 
 
-routerQualidade.get('/', ensuredUser,Qualidade.ListAll)
-routerQualidade.get('/:id',ensuredUser, Qualidade.FindByQualidade)
+routerQualidade.get('/',ensuredUser ,Qualidade.ListAll)
+routerQualidade.get('/:id', Qualidade.FindByQualidade)
 
 routerQualidade.put('/',ensuredUser, Qualidade.UpdateQualidade)
 

@@ -1,5 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import { QualidadeRepositories } from '../Repositories/QualidadeRepositories';
+import { SuperUserRepositories } from '../Repositories/SuperUserRepositories';
 import { UserRepositories } from '../Repositories/UserRepositories';
 
 interface IQualidade {
@@ -30,11 +31,10 @@ class QualidadeServices {
         const qualidadeRepositories = getCustomRepository(QualidadeRepositories)
         const userRepository = getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
-        //const QualidadeExists = await QualidadeRepositories.findOneOrFail({
-         //   Qualidade: Qualidade
-        //})
+
+        const superUserAdmin = getCustomRepository(SuperUserRepositories)
         console.log(userExists)
-        if (userExists) {
+        if (userExists.Dev !="null") {
             const qualidade = qualidadeRepositories.create({ user_id, type })
 
             await qualidadeRepositories.save(qualidade)

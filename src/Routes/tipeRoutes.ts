@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { TipoController } from "../controllers/TipoController";
+import { ensuredAdmin } from "../middleware/ensuredAdmin";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerType = Router()

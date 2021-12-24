@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn, JoinColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn, JoinColumn, ManyToOne } from "typeorm";
 import {v4 as uuid} from 'uuid'
 import {User} from './User'
 
@@ -11,6 +11,7 @@ class Qualidade{
     user_id: string
 
     @JoinColumn({name:"user_id"})
+    @ManyToOne(()=>User)
     userId: User
 
     @Column()

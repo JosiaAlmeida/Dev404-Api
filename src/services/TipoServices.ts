@@ -30,11 +30,8 @@ class TipoServices {
         const TypeRepositories = getCustomRepository(TipoRepositories)
         const userRepository = getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
-        //const typeExists = await TypeRepositories.findOneOrFail({
-         //   type: type
-        //})
         console.log(userExists)
-        if (userExists) {
+        if (userExists.Dev !="Admin") {
             const Type = TypeRepositories.create({ user_id, type })
 
             await TypeRepositories.save(Type)

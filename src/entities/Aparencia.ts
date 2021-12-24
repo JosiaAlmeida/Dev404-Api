@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, OneToMany, ManyToMany } from "typeorm";
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, JoinColumn, OneToMany, ManyToMany, ManyToOne } from "typeorm";
 import {v4 as uuid} from 'uuid'
 import {User} from './User'
 
@@ -11,6 +11,7 @@ class Aparencia{
     user_id: string
 
     @JoinColumn({name:"user_id"})
+    @ManyToOne(()=>User)
     userId: User
 
     @Column()

@@ -27,7 +27,8 @@ class UserController{
             organizacao,
             historia,
             email,
-            number
+            number,
+            Dev
         } = req.body
 
         const user = await service.CreateUser({
@@ -38,7 +39,8 @@ class UserController{
             organizacao,
             historia,
             email,
-            number
+            number,
+            Dev
         })
         return res.status(201).json(user)
     }
@@ -54,7 +56,8 @@ class UserController{
             organizacao,
             historia,
             email,
-            number
+            number,
+            Dev
         } = req.body
         
         const userUpdate = await service.UpdateUser(id, {
@@ -65,7 +68,8 @@ class UserController{
             organizacao,
             historia,
             email,
-            number
+            number,
+            Dev
         })
 
         return res.status(200).json(userUpdate)

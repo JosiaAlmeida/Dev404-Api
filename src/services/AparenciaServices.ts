@@ -30,10 +30,6 @@ class AparenciaServices {
         const aparenciaRepositories = getCustomRepository(AparenciaRepositories)
         const userRepository = getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
-        //const AparenciaExists = await AparenciaRepositories.findOneOrFail({
-         //   Aparencia: Aparencia
-        //})
-        console.log(userExists)
         if (userExists) {
             const Aparencia = aparenciaRepositories.create({ user_id, type })
 

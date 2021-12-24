@@ -10,6 +10,7 @@ interface IUser {
     historia: string
     number: string
     email: string
+    Dev: string
 }
 
 class UserServices {
@@ -37,7 +38,8 @@ class UserServices {
         organizacao,
         historia,
         email,
-        number
+        number,
+        Dev
     }: IUser) {
         const userRepositories = getCustomRepository(UserRepositories)
         const userVerify = await userRepositories.findOne({ email })
@@ -50,7 +52,8 @@ class UserServices {
                 organizacao,
                 historia,
                 email,
-                number
+                number,
+                Dev
             })
             await userRepositories.save(user)
             return user
@@ -64,7 +67,8 @@ class UserServices {
         organizacao,
         historia,
         email,
-        number
+        number,
+        Dev
     }: IUser) {
         const userRepositories = getCustomRepository(UserRepositories)
         //const userVerify = await this.FindById(id)
@@ -79,7 +83,8 @@ class UserServices {
                 organizacao,
                 historia,
                 email,
-                number
+                number,
+                Dev
             })
 
             //await userRepositories.save(userUpdate)
