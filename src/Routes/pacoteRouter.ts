@@ -6,8 +6,8 @@ const routerPacote = Router()
 
 const Pacote = new PacoteController()
 
-routerPacote.get('/',ensuredUser, Pacote.ListAll)
-routerPacote.get('/:id',ensuredUser, Pacote.FindByPacote)
+routerPacote.get('/', Pacote.ListAll)
+routerPacote.get('/:id', Pacote.FindByPacote)
 
 routerPacote.put('/',ensuredUser, Pacote.UpdatePacote)
 
