@@ -3,7 +3,7 @@ import {v4 as uuid} from 'uuid'
 import {User} from './User'
 
 Entity("pacote2")
-class Tipo{
+class Pacote{
     @PrimaryColumn()
     readonly id: string
 
@@ -46,4 +46,4 @@ class Tipo{
     constructor(){
         if(!this.id) this.id = uuid()
     }
-}export {Tipo}
+}export {Pacote}
