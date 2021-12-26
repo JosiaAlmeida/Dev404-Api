@@ -1,1 +1,1 @@
-web: yarn go
+web:yarn start
