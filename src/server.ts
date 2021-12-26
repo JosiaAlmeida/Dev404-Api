@@ -1,4 +1,5 @@
 import "dotenv/config"
+import './util/module-alias';
 import express from 'express'
 import 'reflect-metadata'
 import cors from 'cors'
