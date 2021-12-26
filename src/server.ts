@@ -27,6 +27,9 @@ server.use('/qualidade', routerQualidade)
 server.use('/objetivo',routerObjetivo)
 server.use('/pacote', routerPacote)
 server.use('/ActiveUser', routesUserActive)
+server.get('/',(req, res)=>{
+    res.send("Dev404-API")
+})
 
 const port = process.env.PORT || 3001;
 

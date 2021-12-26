@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
+require("./util/module-alias");
 const express_1 = __importDefault(require("express"));
 require("reflect-metadata");
 const cors_1 = __importDefault(require("cors"));
@@ -26,5 +27,8 @@ server.use('/qualidade', qualidadeRouter_1.routerQualidade);
 server.use('/objetivo', objetivo_1.routerObjetivo);
 server.use('/pacote', pacoteRouter_1.routerPacote);
 server.use('/ActiveUser', UserActiveRouter_1.routesUserActive);
+server.get('/', (req, res) => {
+    res.send("Dev404-API");
+});
 const port = process.env.PORT || 3001;
 server.listen(process.env.PORT || 3001);
