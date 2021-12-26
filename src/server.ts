@@ -29,4 +29,4 @@ server.use('/ActiveUser', routesUserActive)
 
 const port = process.env.PORT || 3001;
 
-server.listen(port,()=> console.log("Servidor rodando na porta 3001"))
+server.listen(process.env.PORT || 3001)
