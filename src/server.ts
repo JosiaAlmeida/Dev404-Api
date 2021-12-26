@@ -1,6 +1,7 @@
 import "dotenv/config"
 import express from 'express'
 import 'reflect-metadata'
+import cors from 'cors'
 import { routerUser } from './Routes/userRoutes'
 
 import './database'
@@ -13,6 +14,7 @@ import { routesUserActive } from "./Routes/UserActiveRouter"
 
 const server = express()
 
+server.use(cors())
 
 server.use(express.json())
 
@@ -24,4 +26,6 @@ server.use('/objetivo',routerObjetivo)
 server.use('/pacote', routerPacote)
 server.use('/ActiveUser', routesUserActive)
 
-server.listen(3001,()=> console.log("Servidor rodando na porta 3001"))
+const port = process.env.PORT || 3001;
+
+server.listen(port,()=> console.log("Servidor rodando na porta 3001"))

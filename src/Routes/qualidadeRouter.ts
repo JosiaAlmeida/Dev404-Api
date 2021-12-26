@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { QualidadeController } from "../controllers/QualidadeController";
-import { ensuredAdmin } from "../middleware/ensuredAdmin";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerQualidade = Router()
