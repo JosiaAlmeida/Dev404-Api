@@ -21,6 +21,7 @@ server.use(cors())
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
 
+server.use((req:Request,res:Response,next:NextFunction)=> next())
 server.use('/user', routerUser)
 server.use('/type', routerType)
 server.use('/aparencia', routerAparencia)
@@ -32,6 +33,5 @@ server.get('/',(req, res)=>{
     res.send("Dev404-API")
 })
 
-server.use((req:Request,res:Response,next:NextFunction)=> next())
 
 server.listen(process.env.PORT || 3000,()=> console.log("Dev404-API"))
