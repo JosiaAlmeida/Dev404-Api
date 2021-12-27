@@ -13,7 +13,7 @@
     "gogoT": "node './src/server.ts'",
     "gogo": "node --trace-warnings --experimental-specifier-resolution=node dist/server.js",
     "gogoI": "nodemon --trace-warnings --experimental-specifier-resolution=node dist/server.js",
-    "gobabel": "yarn build && babel-node dist/server.js",
+    "gobabel": "babel-node dist/server.js",
     "migration": "typeorm migration:run",
     "goTsNode": "nodemon --watch 'src/' --exec \"ts-node src/server.ts\" -e ts"
   },

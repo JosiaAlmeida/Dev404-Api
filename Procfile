@@ -1,1 +1,1 @@
-web:yarn gogoT
+web:yarn gobabel
