@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PacoteController } from "../controllers/PacoteController";
+import PacoteController  from "../controllers/PacoteController";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerPacote = Router()
@@ -15,4 +15,4 @@ routerPacote.post('/',ensuredUser, Pacote.CreatePacote)
 
 routerPacote.delete('/:id',ensuredUser, Pacote.DeletePacote)
 
-export {routerPacote}
+export default routerPacote

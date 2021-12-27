@@ -1,5 +1,5 @@
-import { getCustomRepository } from "typeorm"
-import { UserRepositories } from "../Repositories/UserRepositories"
+import TypeORM from "typeorm"
+import {UserRepositories} from "../Repositories/UserRepositories"
 
 interface IUser {
     name: string
@@ -15,7 +15,7 @@ interface IUser {
 
 class UserServices {
     async AllUser() {
-        const userRepositories = getCustomRepository(UserRepositories)
+        const userRepositories = TypeORM.getCustomRepository(UserRepositories)
         const findUsers = await userRepositories.find()
         const Users = findUsers.map((user) => user)
 
@@ -23,7 +23,7 @@ class UserServices {
     }
 
     async FindById(id: string) {
-        const userRepositories = getCustomRepository(UserRepositories)
+        const userRepositories = TypeORM.getCustomRepository(UserRepositories)
         const userVerify = await userRepositories.findOne({ id })
 
         return userVerify
@@ -41,7 +41,7 @@ class UserServices {
         number,
         Dev
     }: IUser) {
-        const userRepositories = getCustomRepository(UserRepositories)
+        const userRepositories = TypeORM.getCustomRepository(UserRepositories)
         const userVerify = await userRepositories.findOne({ email })
         if (!userVerify) {
             const user = userRepositories.create({
@@ -70,7 +70,7 @@ class UserServices {
         number,
         Dev
     }: IUser) {
-        const userRepositories = getCustomRepository(UserRepositories)
+        const userRepositories = TypeORM.getCustomRepository(UserRepositories)
         //const userVerify = await this.FindById(id)
         const userExists = await userRepositories.findOne(id)
 
@@ -94,7 +94,7 @@ class UserServices {
     }
 
     async DistroyUser(id: string){
-        const userRepositories = getCustomRepository(UserRepositories)
+        const userRepositories = TypeORM.getCustomRepository(UserRepositories)
         const user = await this.FindById(id)
 
         if(user){
@@ -103,4 +103,5 @@ class UserServices {
             return "Ok"
         }else return "User inexistente"
     }
-} export { UserServices }
+} 
+module.exports = UserServices

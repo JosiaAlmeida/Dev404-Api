@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.routerAparencia = void 0;
-const express_1 = require("express");
-const AparenciaController_1 = require("../controllers/AparenciaController");
-const ensuredUser_1 = require("../middleware/ensuredUser");
-const routerAparencia = (0, express_1.Router)();
-exports.routerAparencia = routerAparencia;
-const Aparencia = new AparenciaController_1.AparenciaController();
-routerAparencia.get('/', ensuredUser_1.ensuredUser, Aparencia.ListAll);
-routerAparencia.get('/:id', ensuredUser_1.ensuredUser, Aparencia.FindBy);
-routerAparencia.put('/', ensuredUser_1.ensuredUser, Aparencia.Update);
-routerAparencia.post('/', ensuredUser_1.ensuredUser, Aparencia.Create);
-routerAparencia.delete('/:id', ensuredUser_1.ensuredUser, Aparencia.Delete);
+import { Router } from "express";
+import AparenciaController from "../controllers/AparenciaController";
+import { ensuredUser } from "../middleware/ensuredUser";
+const routerAparencia = Router();
+const Aparencia = new AparenciaController();
+routerAparencia.get('/', ensuredUser, Aparencia.ListAll);
+routerAparencia.get('/:id', ensuredUser, Aparencia.FindBy);
+routerAparencia.put('/', ensuredUser, Aparencia.Update);
+routerAparencia.post('/', ensuredUser, Aparencia.Create);
+routerAparencia.delete('/:id', ensuredUser, Aparencia.Delete);
+export default routerAparencia;
+//# sourceMappingURL=aparenciaRouter.js.map

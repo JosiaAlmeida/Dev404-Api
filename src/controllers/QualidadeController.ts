@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { QualidadeServices } from "../services/QualidadeServices";
+import QualidadeServices from "../services/QualidadeServices";
 
 const service = new QualidadeServices()
 
-class QualidadeController{
+export default class QualidadeController{
     async ListAll(req:Request, res: Response){
         const Qualidades = await service.ListQualidade()
         return res.status(200).json(Qualidades)
@@ -35,4 +35,4 @@ class QualidadeController{
         const Qualidades = await service.Delete(id)
         return res.status(204).json(Qualidades)
     }
-}export {QualidadeController}
+}

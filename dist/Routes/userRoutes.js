@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.routerUser = void 0;
-const express_1 = require("express");
-const UserController_1 = require("../controllers/UserController");
-const ensuredUser_1 = require("../middleware/ensuredUser");
-const routerUser = (0, express_1.Router)();
-exports.routerUser = routerUser;
-const User = new UserController_1.UserController();
-routerUser.get('/', ensuredUser_1.ensuredUser, User.ListUser);
-routerUser.get('/:id', ensuredUser_1.ensuredUser, User.FindById);
-routerUser.put('/', ensuredUser_1.ensuredUser, User.Update);
+import { Router } from "express";
+import UserController from "../controllers/UserController";
+import { ensuredUser } from "../middleware/ensuredUser";
+const routerUser = Router();
+const User = new UserController();
+routerUser.get('/', ensuredUser, User.ListUser);
+routerUser.get('/:id', ensuredUser, User.FindById);
+routerUser.put('/', ensuredUser, User.Update);
 routerUser.post('/', User.createUser);
-routerUser.delete('/delete/:id', ensuredUser_1.ensuredUser, User.DeleteUser);
+routerUser.delete('/delete/:id', ensuredUser, User.DeleteUser);
+export default routerUser;
+//# sourceMappingURL=userRoutes.js.map

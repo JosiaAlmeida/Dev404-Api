@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.routerObjetivo = void 0;
-const express_1 = require("express");
-const ObjetivoController_1 = require("../controllers/ObjetivoController");
-const ensuredUser_1 = require("../middleware/ensuredUser");
-const routerObjetivo = (0, express_1.Router)();
-exports.routerObjetivo = routerObjetivo;
-const Objetivo = new ObjetivoController_1.ObjetivoController();
-routerObjetivo.get('/', ensuredUser_1.ensuredUser, Objetivo.ListAll);
-routerObjetivo.get('/:id', ensuredUser_1.ensuredUser, Objetivo.FindByType);
-routerObjetivo.put('/', ensuredUser_1.ensuredUser, Objetivo.Update);
-routerObjetivo.post('/', ensuredUser_1.ensuredUser, Objetivo.Create);
-routerObjetivo.delete('/:id', ensuredUser_1.ensuredUser, Objetivo.Delete);
+import { Router } from "express";
+import ObjetivoController from "../controllers/ObjetivoController";
+import { ensuredUser } from "../middleware/ensuredUser";
+const routerObjetivo = Router();
+const Objetivo = new ObjetivoController();
+routerObjetivo.get('/', ensuredUser, Objetivo.ListAll);
+routerObjetivo.get('/:id', ensuredUser, Objetivo.FindByType);
+routerObjetivo.put('/', ensuredUser, Objetivo.Update);
+routerObjetivo.post('/', ensuredUser, Objetivo.Create);
+routerObjetivo.delete('/:id', ensuredUser, Objetivo.Delete);
+export default routerObjetivo;
+//# sourceMappingURL=objetivo.js.map

@@ -1,6 +1,6 @@
-import { getCustomRepository } from 'typeorm';
-import { ObjetivoRepositories } from '../Repositories/ObjetivoRepositories';
-import { UserRepositories } from '../Repositories/UserRepositories';
+import TypeORM from 'typeorm';
+import ObjetivoRepositories from '../Repositories/ObjetivoRepositories';
+import {UserRepositories} from '../Repositories/UserRepositories';
 
 interface IObjetivo {
     id ?:string
@@ -8,10 +8,10 @@ interface IObjetivo {
     type: string
 }
 
-class ObjetivoServices {
+export default class ObjetivoServices {
 
     async ListObjetivo(){
-        const objetivoRepositories = getCustomRepository(ObjetivoRepositories)
+        const objetivoRepositories = TypeORM.getCustomRepository(ObjetivoRepositories)
 
         const Objetivo = await objetivoRepositories.find()
         const Objetivos = Objetivo.map(t => t)
@@ -19,7 +19,7 @@ class ObjetivoServices {
     }
 
     async FindByObjetivo(id: string){
-        const objetivoRepositories = getCustomRepository(ObjetivoRepositories)
+        const objetivoRepositories = TypeORM.getCustomRepository(ObjetivoRepositories)
 
         const Objetivo = await objetivoRepositories.findOneOrFail(id)
 
@@ -27,8 +27,8 @@ class ObjetivoServices {
     }
 
     async createService({ user_id, type }: IObjetivo) {
-        const objetivoRepositories = getCustomRepository(ObjetivoRepositories)
-        const userRepository = getCustomRepository(UserRepositories)
+        const objetivoRepositories = TypeORM.getCustomRepository(ObjetivoRepositories)
+        const userRepository = TypeORM.getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
         //const ObjetivoExists = await ObjetivoRepositories.findOneOrFail({
          //   Objetivo: Objetivo
@@ -45,7 +45,7 @@ class ObjetivoServices {
     }
 
     async UpdateType({id, type, user_id}:IObjetivo){
-        const objetivoRepositories = getCustomRepository(ObjetivoRepositories)
+        const objetivoRepositories = TypeORM.getCustomRepository(ObjetivoRepositories)
         //const userVerify = await this.FindById(id)
         const userExists = await objetivoRepositories.findOne(id)
 
@@ -60,8 +60,8 @@ class ObjetivoServices {
     }
 
     async Delete(id: string){
-        const objetivoRepositories = getCustomRepository(ObjetivoRepositories)
+        const objetivoRepositories = TypeORM.getCustomRepository(ObjetivoRepositories)
         await objetivoRepositories.delete(id)
         return "Eliminado"
     }
-} export { ObjetivoServices }
+} 

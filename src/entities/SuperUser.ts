@@ -1,9 +1,15 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn, JoinColumn } from "typeorm";
+import   {PrimaryColumn, 
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne} from "typeorm";
 import { v4 as uuid } from "uuid";
 import {Exclude} from 'class-transformer'
 
 @Entity("SuperUser")
-class SuperUser {
+export default class SuperUser {
     @PrimaryColumn()
     id: string
     
@@ -27,4 +33,4 @@ class SuperUser {
         if(!this.id) this.id = uuid()
         this.Dev = "true"
     }
-}export {SuperUser}
+}

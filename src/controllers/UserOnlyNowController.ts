@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { UserOnlyNow } from "../services/UserOnlyNow";
+import UserOnlyNow from "../services/UserOnlyNow";
 
 const userOnly = new UserOnlyNow()
-class UserOnlyNowController{
+export default class UserOnlyNowController{
     async handle(req: Request, res: Response){
         const {email} = req.body
         const userActive = await userOnly.execute(email)
@@ -21,4 +21,4 @@ class UserOnlyNowController{
         const Admin = await userOnly.LoginAdmin({email, password,superKyUser})
         return res.status(201).json(Admin)
     }
-}export {UserOnlyNowController}
+}

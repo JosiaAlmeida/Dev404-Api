@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { TipoServices } from "../services/TipoServices";
+import TipoServices from "../services/TipoServices";
 
 const service = new TipoServices()
 
-class TipoController{
+export default class TipoController{
     async ListAll(req:Request, res: Response){
         const Types = await service.ListType()
         return res.status(200).json(Types)
@@ -35,4 +35,4 @@ class TipoController{
         const Types = await service.Delete(id)
         return res.status(204).json(Types)
     }
-}export {TipoController}
+}

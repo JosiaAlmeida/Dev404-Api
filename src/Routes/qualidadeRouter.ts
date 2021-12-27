@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { QualidadeController } from "../controllers/QualidadeController";
+import QualidadeController from "../controllers/QualidadeController";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerQualidade = Router()
@@ -16,4 +16,4 @@ routerQualidade.post('/',ensuredUser, Qualidade.CreateQualidade)
 
 routerQualidade.delete('/:id',ensuredUser, Qualidade.DeleteQualidade)
 
-export {routerQualidade}
+export default routerQualidade

@@ -1,6 +1,6 @@
-import { getCustomRepository } from 'typeorm';
-import { AparenciaRepositories } from '../Repositories/AparenciaRepositories';
-import { UserRepositories } from '../Repositories/UserRepositories';
+import TypeORM from 'typeorm';
+import AparenciaRepositories from '../Repositories/AparenciaRepositories';
+import {UserRepositories} from '../Repositories/UserRepositories';
 
 interface IAparencia {
     id ?:string
@@ -8,10 +8,10 @@ interface IAparencia {
     type: string
 }
 
-class AparenciaServices {
+export default class AparenciaServices {
 
     async ListAparencia(){
-        const aparenciaRepositories = getCustomRepository(AparenciaRepositories)
+        const aparenciaRepositories = TypeORM.getCustomRepository(AparenciaRepositories)
 
         const Aparencia = await aparenciaRepositories.find()
         const Aparencias = Aparencia.map(t => t)
@@ -19,7 +19,7 @@ class AparenciaServices {
     }
 
     async FindByAparencia(id: string){
-        const aparenciaRepositories = getCustomRepository(AparenciaRepositories)
+        const aparenciaRepositories = TypeORM.getCustomRepository(AparenciaRepositories)
 
         const Aparencia = await aparenciaRepositories.findOneOrFail(id)
 
@@ -27,8 +27,8 @@ class AparenciaServices {
     }
 
     async createService({ user_id, type }: IAparencia) {
-        const aparenciaRepositories = getCustomRepository(AparenciaRepositories)
-        const userRepository = getCustomRepository(UserRepositories)
+        const aparenciaRepositories = TypeORM.getCustomRepository(AparenciaRepositories)
+        const userRepository = TypeORM.getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
         if (userExists) {
             const Aparencia = aparenciaRepositories.create({ user_id, type })
@@ -41,7 +41,7 @@ class AparenciaServices {
     }
 
     async UpdateType({id, type, user_id}:IAparencia){
-        const aparenciaRepositories = getCustomRepository(AparenciaRepositories)
+        const aparenciaRepositories = TypeORM.getCustomRepository(AparenciaRepositories)
         //const userVerify = await this.FindById(id)
         const userExists = await aparenciaRepositories.findOne(id)
 
@@ -56,8 +56,8 @@ class AparenciaServices {
     }
 
     async Delete(id: string){
-        const aparenciaRepositories = getCustomRepository(AparenciaRepositories)
+        const aparenciaRepositories = TypeORM.getCustomRepository(AparenciaRepositories)
         await aparenciaRepositories.delete(id)
         return "Eliminado"
     }
-} export { AparenciaServices }
+} 

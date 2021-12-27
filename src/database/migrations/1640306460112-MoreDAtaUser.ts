@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, TableColumn} from "typeorm";
 
-export class MoreDAtaUser1640306460112 implements MigrationInterface {
+export default class MoreDAtaUser1640306460112 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.addColumn(

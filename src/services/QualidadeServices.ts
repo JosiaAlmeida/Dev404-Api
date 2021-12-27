@@ -1,7 +1,7 @@
-import { getCustomRepository } from 'typeorm';
-import { QualidadeRepositories } from '../Repositories/QualidadeRepositories';
-import { SuperUserRepositories } from '../Repositories/SuperUserRepositories';
-import { UserRepositories } from '../Repositories/UserRepositories';
+import TypeORM from 'typeorm';
+import QualidadeRepositories from '../Repositories/QualidadeRepositories';
+import SuperUserRepositories from '../Repositories/SuperUserRepositories';
+import {UserRepositories} from '../Repositories/UserRepositories';
 
 interface IQualidade {
     id ?:string
@@ -9,10 +9,10 @@ interface IQualidade {
     type: string
 }
 
-class QualidadeServices {
+export default class QualidadeServices {
 
     async ListQualidade(){
-        const qualidadeRepositories = getCustomRepository(QualidadeRepositories)
+        const qualidadeRepositories = TypeORM.getCustomRepository(QualidadeRepositories)
 
         const Qualidade = await qualidadeRepositories.find()
         const Qualidades = Qualidade.map(t => t)
@@ -20,7 +20,7 @@ class QualidadeServices {
     }
 
     async FindByQualidade(id: string){
-        const qualidadeRepositories = getCustomRepository(QualidadeRepositories)
+        const qualidadeRepositories = TypeORM.getCustomRepository(QualidadeRepositories)
 
         const Qualidade = await qualidadeRepositories.findOneOrFail(id)
 
@@ -28,11 +28,11 @@ class QualidadeServices {
     }
 
     async createService({ user_id, type }: IQualidade) {
-        const qualidadeRepositories = getCustomRepository(QualidadeRepositories)
-        const userRepository = getCustomRepository(UserRepositories)
+        const qualidadeRepositories = TypeORM.getCustomRepository(QualidadeRepositories)
+        const userRepository = TypeORM.getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
 
-        const superUserAdmin = getCustomRepository(SuperUserRepositories)
+        const superUserAdmin = TypeORM.getCustomRepository(SuperUserRepositories)
         console.log(userExists)
         if (userExists.Dev !="null") {
             const qualidade = qualidadeRepositories.create({ user_id, type })
@@ -45,7 +45,7 @@ class QualidadeServices {
     }
 
     async UpdateType({id, type, user_id}:IQualidade){
-        const qualidadeRepositories = getCustomRepository(QualidadeRepositories)
+        const qualidadeRepositories = TypeORM.getCustomRepository(QualidadeRepositories)
         //const userVerify = await this.FindById(id)
         const userExists = await qualidadeRepositories.findOne(id)
 
@@ -60,8 +60,8 @@ class QualidadeServices {
     }
 
     async Delete(id: string){
-        const qualidadeRepositories = getCustomRepository(QualidadeRepositories)
+        const qualidadeRepositories = TypeORM.getCustomRepository(QualidadeRepositories)
         await qualidadeRepositories.delete(id)
         return "Eliminado"
     }
-} export { QualidadeServices }
+} 

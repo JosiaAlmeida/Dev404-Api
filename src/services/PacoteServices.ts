@@ -1,6 +1,6 @@
-import { getCustomRepository } from 'typeorm';
-import { PacoteRepositories } from '../Repositories/PacoteRepositories';
-import { UserRepositories } from '../Repositories/UserRepositories';
+import TypeORM from 'typeorm';
+import PacoteRepositories from '../Repositories/PacoteRepositories';
+import {UserRepositories} from '../Repositories/UserRepositories';
 
 interface IPacote {
     id ?:string
@@ -14,10 +14,10 @@ interface IPacote {
     selecionado: boolean
 }
 
-class PacoteServices {
+export default class PacoteServices {
 
     async ListPacote(){
-        const pacoteRepositories = getCustomRepository(PacoteRepositories)
+        const pacoteRepositories = TypeORM.getCustomRepository(PacoteRepositories)
 
         const Pacote = await pacoteRepositories.find()
         const Pacotes = Pacote.map(t => t)
@@ -25,7 +25,7 @@ class PacoteServices {
     }
 
     async FindByPacote(id: string){
-        const pacoteRepositories = getCustomRepository(PacoteRepositories)
+        const pacoteRepositories = TypeORM.getCustomRepository(PacoteRepositories)
 
         const Pacote = await pacoteRepositories.findOneOrFail(id)
 
@@ -33,8 +33,8 @@ class PacoteServices {
     }
 
     async createService({ user_id, name, preco, PaginaTotal, BD, Manutencao, Descricao, selecionado }: IPacote) {
-        const pacoteRepositories = getCustomRepository(PacoteRepositories)
-        const userRepository = getCustomRepository(UserRepositories)
+        const pacoteRepositories = TypeORM.getCustomRepository(PacoteRepositories)
+        const userRepository = TypeORM.getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
         console.log(userExists)
         if (userExists) {
@@ -48,7 +48,7 @@ class PacoteServices {
     }
 
     async UpdateType({id, user_id, name, preco, PaginaTotal, BD, Manutencao, Descricao, selecionado }:IPacote){
-        const pacoteRepositories = getCustomRepository(PacoteRepositories)
+        const pacoteRepositories = TypeORM.getCustomRepository(PacoteRepositories)
         //const userVerify = await this.FindById(id)
         const userExists = await pacoteRepositories.findOne(id)
 
@@ -60,8 +60,8 @@ class PacoteServices {
     }
 
     async Delete(id: string){
-        const pacoteRepositories = getCustomRepository(PacoteRepositories)
+        const pacoteRepositories = TypeORM.getCustomRepository(PacoteRepositories)
         await pacoteRepositories.delete(id)
         return "Eliminado"
     }
-} export { PacoteServices }
+} 

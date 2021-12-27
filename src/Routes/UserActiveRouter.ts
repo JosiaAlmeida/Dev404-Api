@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { ActionsUserController } from "../controllers/ActionsUserController";
-import { UserOnlyNowController } from "../controllers/UserOnlyNowController";
+import ActionsUserController from "../controllers/ActionsUserController";
+import UserOnlyNowController from "../controllers/UserOnlyNowController";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routesUserActive = Router()
@@ -15,4 +15,4 @@ routesUserActive.post('/', userOnly.handle)
 routesUserActive.post('/admin/create', userOnly.CreateAdmin)
 routesUserActive.post('/admin/login', userOnly.LoginAdmin)
 
-export {routesUserActive}
+export default routesUserActive

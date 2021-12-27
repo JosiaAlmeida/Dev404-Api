@@ -1,6 +1,6 @@
-import { getCustomRepository } from 'typeorm';
-import { TipoRepositories } from '../Repositories/TipoRepositories';
-import { UserRepositories } from '../Repositories/UserRepositories';
+import TypeORM from 'typeorm';
+import TipoRepositories from '../Repositories/TipoRepositories';
+import {UserRepositories} from '../Repositories/UserRepositories';
 
 interface IType {
     id ?:string
@@ -8,10 +8,10 @@ interface IType {
     type: string
 }
 
-class TipoServices {
+export default class TipoServices {
 
     async ListType(){
-        const TypeRepositories = getCustomRepository(TipoRepositories)
+        const TypeRepositories = TypeORM.getCustomRepository(TipoRepositories)
 
         const type = await TypeRepositories.find()
         const types = type.map(t => t)
@@ -19,7 +19,7 @@ class TipoServices {
     }
 
     async FindByType(id: string){
-        const TypeRepositories = getCustomRepository(TipoRepositories)
+        const TypeRepositories = TypeORM.getCustomRepository(TipoRepositories)
 
         const type = await TypeRepositories.findOneOrFail(id)
 
@@ -27,8 +27,8 @@ class TipoServices {
     }
 
     async createService({ user_id, type }: IType) {
-        const TypeRepositories = getCustomRepository(TipoRepositories)
-        const userRepository = getCustomRepository(UserRepositories)
+        const TypeRepositories = TypeORM.getCustomRepository(TipoRepositories)
+        const userRepository = TypeORM.getCustomRepository(UserRepositories)
         const userExists = await userRepository.findOne(user_id)
         console.log(userExists)
         if (userExists.Dev !="Admin") {
@@ -42,7 +42,7 @@ class TipoServices {
     }
 
     async UpdateType({id, type, user_id}:IType){
-        const TypeRepositories = getCustomRepository(TipoRepositories)
+        const TypeRepositories = TypeORM.getCustomRepository(TipoRepositories)
         //const userVerify = await this.FindById(id)
         const userExists = await TypeRepositories.findOne(id)
 
@@ -57,8 +57,8 @@ class TipoServices {
     }
 
     async Delete(id: string){
-        const TypeRepositories = getCustomRepository(TipoRepositories)
+        const TypeRepositories = TypeORM.getCustomRepository(TipoRepositories)
         await TypeRepositories.delete(id)
         return "Eliminado"
     }
-} export { TipoServices }
+} 

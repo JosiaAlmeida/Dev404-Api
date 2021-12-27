@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner,Table} from "typeorm";
 
-export class createPacote21640303110974 implements MigrationInterface {
+export default class createPacote21640303110974 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(

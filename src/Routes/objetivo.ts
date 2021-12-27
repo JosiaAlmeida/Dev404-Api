@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ObjetivoController } from "../controllers/ObjetivoController";
+import ObjetivoController from "../controllers/ObjetivoController";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerObjetivo = Router()
@@ -15,4 +15,4 @@ routerObjetivo.post('/',ensuredUser, Objetivo.Create)
 
 routerObjetivo.delete('/:id',ensuredUser, Objetivo.Delete)
 
-export {routerObjetivo}
+export default routerObjetivo

@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { AparenciaServices } from "../services/AparenciaServices";
+import  AparenciaServices  from "../services/AparenciaServices";
 
 const service = new AparenciaServices()
 
-class AparenciaController{
+export default class AparenciaController{
     async ListAll(req:Request, res: Response){
         const Types = await service.ListAparencia()
         return res.status(200).json(Types)
@@ -35,4 +35,4 @@ class AparenciaController{
         const Types = await service.Delete(id)
         return res.status(204).json(Types)
     }
-}export {AparenciaController}
+}

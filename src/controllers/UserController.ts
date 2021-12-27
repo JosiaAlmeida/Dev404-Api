@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { UserServices } from "../services/UserServices";
+const UserServices = require("../services/UserServices");
 
 const service = new UserServices()
 
-class UserController{
+export default class UserController{
     async ListUser(req: Request, res:Response){
         const Users = await service.AllUser()
         return res.status(200).json(Users) 
@@ -82,4 +82,4 @@ class UserController{
         return res.status(204).json(User)
     }
 
-}export {UserController}
+}

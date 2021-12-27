@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { AparenciaController } from "../controllers/AparenciaController";
+import AparenciaController from "../controllers/AparenciaController";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerAparencia = Router()
@@ -15,4 +15,4 @@ routerAparencia.post('/',ensuredUser, Aparencia.Create)
 
 routerAparencia.delete('/:id',ensuredUser, Aparencia.Delete)
 
-export {routerAparencia}
+export default routerAparencia

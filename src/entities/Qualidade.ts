@@ -1,9 +1,15 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn, JoinColumn, ManyToOne } from "typeorm";
+import   {PrimaryColumn, 
+    Column,
+    CreateDateColumn,
+    UpdateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne} from "typeorm";
 import {v4 as uuid} from 'uuid'
-import {User} from './User'
+import User from './User'
 
 @Entity("qualidade")
-class Qualidade{
+export default class Qualidade{
     @PrimaryColumn()
     readonly id: string
 
@@ -26,4 +32,4 @@ class Qualidade{
     constructor(){
         if(!this.id) this.id = uuid()
     }
-}export {Qualidade}
+}

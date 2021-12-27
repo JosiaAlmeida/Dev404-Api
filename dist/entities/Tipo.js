@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,44 +7,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tipo = void 0;
-const typeorm_1 = require("typeorm");
-const uuid_1 = require("uuid");
-const User_1 = require("./User");
+import { PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { v4 as uuid } from 'uuid';
+import User from './User';
 let Tipo = class Tipo {
     constructor() {
         if (!this.id)
-            this.id = (0, uuid_1.v4)();
+            this.id = uuid();
     }
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    PrimaryColumn(),
     __metadata("design:type", String)
 ], Tipo.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    Column(),
     __metadata("design:type", String)
 ], Tipo.prototype, "user_id", void 0);
 __decorate([
-    (0, typeorm_1.JoinColumn)({ name: "user_id" }),
-    (0, typeorm_1.ManyToOne)(() => User_1.User),
-    __metadata("design:type", User_1.User)
+    JoinColumn({ name: "user_id" }),
+    ManyToOne(() => User),
+    __metadata("design:type", User)
 ], Tipo.prototype, "userId", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    Column(),
     __metadata("design:type", String)
 ], Tipo.prototype, "type", void 0);
 __decorate([
-    (0, typeorm_1.CreateDateColumn)(),
+    CreateDateColumn(),
     __metadata("design:type", Date)
 ], Tipo.prototype, "created_at", void 0);
 __decorate([
-    (0, typeorm_1.UpdateDateColumn)(),
+    UpdateDateColumn(),
     __metadata("design:type", Date)
 ], Tipo.prototype, "updade_at", void 0);
 Tipo = __decorate([
-    (0, typeorm_1.Entity)("type"),
+    Entity("type"),
     __metadata("design:paramtypes", [])
 ], Tipo);
-exports.Tipo = Tipo;
+export default Tipo;
+//# sourceMappingURL=Tipo.js.map

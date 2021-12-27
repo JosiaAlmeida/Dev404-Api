@@ -1,15 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.routesUserActive = void 0;
-const express_1 = require("express");
-const ActionsUserController_1 = require("../controllers/ActionsUserController");
-const UserOnlyNowController_1 = require("../controllers/UserOnlyNowController");
-const ensuredUser_1 = require("../middleware/ensuredUser");
-const routesUserActive = (0, express_1.Router)();
-exports.routesUserActive = routesUserActive;
-const userOnly = new UserOnlyNowController_1.UserOnlyNowController();
-const ActionsUser = new ActionsUserController_1.ActionsUserController();
-routesUserActive.post('/Actions', ensuredUser_1.ensuredUser, ActionsUser.handle);
+import { Router } from "express";
+import ActionsUserController from "../controllers/ActionsUserController";
+import UserOnlyNowController from "../controllers/UserOnlyNowController";
+import { ensuredUser } from "../middleware/ensuredUser";
+const routesUserActive = Router();
+const userOnly = new UserOnlyNowController();
+const ActionsUser = new ActionsUserController();
+routesUserActive.post('/Actions', ensuredUser, ActionsUser.handle);
 routesUserActive.post('/', userOnly.handle);
 routesUserActive.post('/admin/create', userOnly.CreateAdmin);
 routesUserActive.post('/admin/login', userOnly.LoginAdmin);
+export default routesUserActive;
+//# sourceMappingURL=UserActiveRouter.js.map

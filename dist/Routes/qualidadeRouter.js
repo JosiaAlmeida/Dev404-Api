@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.routerQualidade = void 0;
-const express_1 = require("express");
-const QualidadeController_1 = require("../controllers/QualidadeController");
-const ensuredUser_1 = require("../middleware/ensuredUser");
-const routerQualidade = (0, express_1.Router)();
-exports.routerQualidade = routerQualidade;
-const Qualidade = new QualidadeController_1.QualidadeController();
-routerQualidade.get('/', ensuredUser_1.ensuredUser, Qualidade.ListAll);
-routerQualidade.get('/:id', ensuredUser_1.ensuredUser, Qualidade.FindByQualidade);
-routerQualidade.put('/', ensuredUser_1.ensuredUser, Qualidade.UpdateQualidade);
-routerQualidade.post('/', ensuredUser_1.ensuredUser, Qualidade.CreateQualidade);
-routerQualidade.delete('/:id', ensuredUser_1.ensuredUser, Qualidade.DeleteQualidade);
+import { Router } from "express";
+import QualidadeController from "../controllers/QualidadeController";
+import { ensuredUser } from "../middleware/ensuredUser";
+const routerQualidade = Router();
+const Qualidade = new QualidadeController();
+routerQualidade.get('/', ensuredUser, Qualidade.ListAll);
+routerQualidade.get('/:id', ensuredUser, Qualidade.FindByQualidade);
+routerQualidade.put('/', ensuredUser, Qualidade.UpdateQualidade);
+routerQualidade.post('/', ensuredUser, Qualidade.CreateQualidade);
+routerQualidade.delete('/:id', ensuredUser, Qualidade.DeleteQualidade);
+export default routerQualidade;
+//# sourceMappingURL=qualidadeRouter.js.map

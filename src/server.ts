@@ -1,17 +1,16 @@
 import "dotenv/config"
-import './util/module-alias';
-import express from 'express'
+// import './util/module-alias';
+const express = require('express')
 import 'reflect-metadata'
 import cors from 'cors'
-import { routerUser } from './Routes/userRoutes'
-
+import routerUser from './Routes/userRoutes'
 import './database'
-import { routerType } from './Routes/tipeRoutes'
-import { routerAparencia } from './Routes/aparenciaRouter'
-import { routerQualidade } from './Routes/qualidadeRouter'
-import { routerObjetivo } from './Routes/objetivo'
-import { routerPacote } from './Routes/pacoteRouter'
-import { routesUserActive } from "./Routes/UserActiveRouter"
+import routerType from './Routes/tipeRoutes'
+import routerAparencia from './Routes/aparenciaRouter'
+import routerQualidade from './Routes/qualidadeRouter'
+import routerObjetivo from './Routes/objetivo'
+import routerPacote from './Routes/pacoteRouter'
+import routesUserActive from "./Routes/UserActiveRouter"
 
 const server = express()
 
@@ -31,6 +30,5 @@ server.get('/',(req, res)=>{
     res.send("Dev404-API")
 })
 
-const port = process.env.PORT || 3001;
 
 server.listen(process.env.PORT || 3000,()=> console.log("Dev404-API"))

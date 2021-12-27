@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { UserController } from "../controllers/UserController";
+import UserController from "../controllers/UserController";
 import { ensuredUser } from "../middleware/ensuredUser";
 
 const routerUser = Router()
@@ -16,4 +16,4 @@ routerUser.post('/', User.createUser)
 
 routerUser.delete('/delete/:id',ensuredUser, User.DeleteUser)
 
-export {routerUser}
+export default routerUser

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { verify } from 'jsonwebtoken';
+import jsonwebtoken from 'jsonwebtoken';
 
 interface IPlayload {
     sub: string
@@ -11,12 +11,12 @@ export async function ensuredUser(req: Request, res: Response, next: NextFunctio
         const [, token] = tokenHeader.split(' ')
         if (token) {
             try {
-                if (verify(token, process.env.JWT_KEY) as IPlayload) {
-                    const { sub } = verify(token, process.env.JWT_KEY) as IPlayload
+                if (jsonwebtoken.verify(token, process.env.JWT_KEY) as IPlayload) {
+                    const { sub } = jsonwebtoken.verify(token, process.env.JWT_KEY) as IPlayload
                     if (sub) req.user_id = sub
                 }
-                else if (verify(token, process.env.JWT_KEY_ADMIN) as IPlayload) {
-                    const { sub } = verify(token, process.env.JWT_KEY_ADMIN) as IPlayload
+                else if (jsonwebtoken.verify(token, process.env.JWT_KEY_ADMIN) as IPlayload) {
+                    const { sub } = jsonwebtoken.verify(token, process.env.JWT_KEY_ADMIN) as IPlayload
                     if (sub) req.user_id = sub
                 }
 

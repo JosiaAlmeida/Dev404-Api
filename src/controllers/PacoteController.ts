@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { PacoteServices } from "../services/PacoteServices";
+import PacoteServices from "../services/PacoteServices";
 
 const service = new PacoteServices()
 
-class PacoteController{
+export default class PacoteController{
     async ListAll(req:Request, res: Response){
         const Pacotes = await service.ListPacote()
         return res.status(200).json(Pacotes)
@@ -35,4 +35,4 @@ class PacoteController{
         const Pacotes = await service.Delete(id)
         return res.status(204).json(Pacotes)
     }
-}export {PacoteController}
+}

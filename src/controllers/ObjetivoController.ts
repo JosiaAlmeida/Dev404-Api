@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { ObjetivoServices } from "../services/ObjetivoServices";
+import ObjetivoServices  from "../services/ObjetivoServices";
 
 const service = new ObjetivoServices()
 
-class ObjetivoController{
+export default class ObjetivoController{
     async ListAll(req:Request, res: Response){
         const Types = await service.ListObjetivo()
         return res.status(200).json(Types)
@@ -35,4 +35,4 @@ class ObjetivoController{
         const Types = await service.Delete(id)
         return res.status(204).json(Types)
     }
-}export {ObjetivoController}
+}

@@ -1,7 +1,7 @@
-import { Repository, EntityRepository } from "typeorm";
-import { SuperUser } from "../entities/SuperUser";
+import  {EntityRepository, Repository} from "typeorm";
+import SuperUser from "../entities/SuperUser";
 
 @EntityRepository(SuperUser)
-class SuperUserRepositories extends Repository<SuperUser>{
+export default class SuperUserRepositories extends Repository<SuperUser>{
 
-}export {SuperUserRepositories}
+}

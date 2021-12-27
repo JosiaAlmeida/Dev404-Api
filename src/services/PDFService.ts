@@ -1,24 +1,24 @@
-import { getCustomRepository } from 'typeorm';
-import { AparenciaRepositories } from '../Repositories/AparenciaRepositories';
-import { ObjetivoRepositories } from '../Repositories/ObjetivoRepositories';
-import { PacoteRepositories } from '../Repositories/PacoteRepositories';
-import { QualidadeRepositories } from '../Repositories/QualidadeRepositories';
-import { TipoRepositories } from '../Repositories/TipoRepositories';
-import { UserRepositories } from '../Repositories/UserRepositories';
-import { ActionsUserServices } from './ActionsUserServices';
+import TypeORM from 'typeorm';
+import AparenciaRepositories from '../Repositories/AparenciaRepositories';
+import ObjetivoRepositories from '../Repositories/ObjetivoRepositories';
+import PacoteRepositories from '../Repositories/PacoteRepositories';
+import QualidadeRepositories from '../Repositories/QualidadeRepositories';
+import TipoRepositories from '../Repositories/TipoRepositories';
+import {UserRepositories} from '../Repositories/UserRepositories';
+import ActionsUserServices from './ActionsUserServices';
 
 
-class PDFService{
+export default class PDFService{
     async execute(email: string){
-        const userRepository = getCustomRepository(UserRepositories)
-        const tipoRepository = getCustomRepository(TipoRepositories)
-        const qualidadeRepo = getCustomRepository(QualidadeRepositories)
-        const pacoteRepo = getCustomRepository(PacoteRepositories)
-        const objetivoRepo = getCustomRepository(ObjetivoRepositories)
-        const aparenciaRepo = getCustomRepository(AparenciaRepositories)
+        const userRepository = TypeORM.getCustomRepository(UserRepositories)
+        const tipoRepository = TypeORM.getCustomRepository(TipoRepositories)
+        const qualidadeRepo = TypeORM.getCustomRepository(QualidadeRepositories)
+        const pacoteRepo = TypeORM.getCustomRepository(PacoteRepositories)
+        const objetivoRepo = TypeORM.getCustomRepository(ObjetivoRepositories)
+        const aparenciaRepo = TypeORM.getCustomRepository(AparenciaRepositories)
 
         const Service = new ActionsUserServices()
 
 
     }
-}export {PDFService}
+}
