@@ -7,10 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node --loader ts-node/esm 'src/server.ts'",
+    "start": "ts-node src/server.ts",
     "go": "ts-node-dev src/server.ts",
-    "goT": "node --trace-deprecation --abort-on-uncaught-exception ts-node/register src/server.ts",
-    "gogoT": "node './src/server.ts'",
     "gogo": "node --trace-warnings --experimental-specifier-resolution=node dist/server.js",
     "gogoI": "nodemon --trace-warnings --experimental-specifier-resolution=node dist/server.js",
     "gobabel": "node dist/server.js",
