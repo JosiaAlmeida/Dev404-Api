@@ -1,1 +1,1 @@
-web:yarn gobabel
+web:yarn start
