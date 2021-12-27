@@ -1,3 +1,5 @@
+import { NextFunction, Request, Response } from "express"
+
 require("dotenv/config")
 // import './util/module-alias';
 const express = require('express')
@@ -30,5 +32,6 @@ server.get('/',(req, res)=>{
     res.send("Dev404-API")
 })
 
+server.use((req:Request,res:Response,next:NextFunction)=> next())
 
 server.listen(process.env.PORT || 3000,()=> console.log("Dev404-API"))
