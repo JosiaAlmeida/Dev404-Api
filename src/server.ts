@@ -1,10 +1,10 @@
-import "dotenv/config"
+require("dotenv/config")
 // import './util/module-alias';
-import express from 'express'
-import 'reflect-metadata'
-import cors from 'cors'
-import routerUser from './Routes/userRoutes'
-import './database'
+const express = require('express')
+require('reflect-metadata')
+const cors = require('cors')
+// import routerUser from './Routes/userRoutes'
+// require('./database')
 // import routerType from './Routes/tipeRoutes'
 // import routerAparencia from './Routes/aparenciaRouter'
 // import routerQualidade from './Routes/qualidadeRouter'
@@ -19,7 +19,7 @@ server.use(cors())
 server.use(express.json())
 server.use(express.urlencoded({extended: true}))
 
-server.use('/user', routerUser)
+// server.use('/user', routerUser)
 // server.use('/type', routerType)
 // server.use('/aparencia', routerAparencia)
 // server.use('/qualidade', routerQualidade)
