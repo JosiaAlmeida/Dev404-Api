@@ -1,1 +1,1 @@
-web:yarn goTsNode
+web:yarn start

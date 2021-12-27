@@ -16,6 +16,18 @@ const typeorm_1 = require("typeorm");
 const uuid_1 = require("uuid");
 const User_1 = __importDefault(require("./User"));
 let Pacote = class Pacote {
+    id;
+    user_id;
+    userId;
+    name;
+    preco;
+    PaginaTotal;
+    BD;
+    Manutencao;
+    Descricao;
+    selecionado;
+    created_at;
+    updade_at;
     constructor() {
         if (!this.id)
             this.id = (0, uuid_1.v4)();

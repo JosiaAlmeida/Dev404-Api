@@ -13,6 +13,12 @@ const typeorm_1 = require("typeorm");
 const uuid_1 = require("uuid");
 const class_transformer_1 = require("class-transformer");
 let SuperUser = class SuperUser {
+    id;
+    email;
+    password;
+    Dev;
+    created_at;
+    updated_at;
     constructor() {
         if (!this.id)
             this.id = (0, uuid_1.v4)();

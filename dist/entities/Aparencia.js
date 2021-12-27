@@ -12,42 +12,48 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const typeorm_1 = require("typeorm");
-const uuid_1 = require("uuid");
+const { PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Entity, JoinColumn, ManyToOne } = require("typeorm");
+const { v4 } = require('uuid');
 const User_1 = __importDefault(require("./User"));
 let Aparencia = class Aparencia {
+    id;
+    user_id;
+    userId;
+    type;
+    created_at;
+    updade_at;
     constructor() {
         if (!this.id)
-            this.id = (0, uuid_1.v4)();
+            this.id = v4();
     }
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    PrimaryColumn(),
     __metadata("design:type", String)
 ], Aparencia.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    Column(),
     __metadata("design:type", String)
 ], Aparencia.prototype, "user_id", void 0);
 __decorate([
-    (0, typeorm_1.JoinColumn)({ name: "user_id" }),
-    (0, typeorm_1.ManyToOne)(() => User_1.default),
+    JoinColumn({ name: "user_id" }),
+    ManyToOne(() => User_1.default),
     __metadata("design:type", User_1.default)
 ], Aparencia.prototype, "userId", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    Column(),
     __metadata("design:type", String)
 ], Aparencia.prototype, "type", void 0);
 __decorate([
-    (0, typeorm_1.CreateDateColumn)(),
+    CreateDateColumn(),
     __metadata("design:type", Date)
 ], Aparencia.prototype, "created_at", void 0);
 __decorate([
-    (0, typeorm_1.UpdateDateColumn)(),
+    UpdateDateColumn(),
     __metadata("design:type", Date)
 ], Aparencia.prototype, "updade_at", void 0);
 Aparencia = __decorate([
-    (0, typeorm_1.Entity)("aparencia"),
+    Entity("aparencia"),
     __metadata("design:paramtypes", [])
 ], Aparencia);
 exports.default = Aparencia;

@@ -7,14 +7,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "ts-node src/server.ts",
+    "start": "node --loader ts-node/esm 'src/server.ts'",
     "go": "ts-node-dev src/server.ts",
+    "goT": "node -r esm src/server.ts",
     "gogoT": "node --trace-warnings --experimental-specifier-resolution=node src/server.ts",
     "gogo": "node --trace-warnings --experimental-specifier-resolution=node dist/server.js",
     "gogoI": "nodemon --trace-warnings --experimental-specifier-resolution=node dist/server.js",
     "gobabel": "yarn build && babel-node dist/server.js",
     "migration": "typeorm migration:run",
-    "goTsNode":"nodemon --watch 'src/' --exec \"ts-node src/server.ts\" -e ts"
+    "goTsNode": "nodemon --watch 'src/' --exec \"ts-node src/server.ts\" -e ts"
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.16.5",

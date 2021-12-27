@@ -1,4 +1,4 @@
-import   {PrimaryColumn, 
+import {PrimaryColumn, 
     Column,
     CreateDateColumn,
     UpdateDateColumn,

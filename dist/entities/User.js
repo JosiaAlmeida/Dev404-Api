@@ -12,6 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const uuid_1 = require("uuid");
 let User = class User {
+    id;
+    name;
+    Bi;
+    Dev;
+    sexo;
+    empresa;
+    organizacao;
+    historia;
+    email;
+    number;
+    created_at;
+    updated_up;
     constructor() {
         if (!this.id)
             this.id = (0, uuid_1.v4)();

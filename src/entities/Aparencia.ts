@@ -1,11 +1,11 @@
-import   {PrimaryColumn, 
+const {PrimaryColumn, 
     Column,
     CreateDateColumn,
     UpdateDateColumn,
     Entity,
     JoinColumn,
-    ManyToOne} from "typeorm";
-import {v4 as uuid} from 'uuid'
+    ManyToOne} = require("typeorm");
+const {v4} = require('uuid')
 import User from './User'
 
 @Entity("aparencia")
@@ -30,6 +30,6 @@ export default class Aparencia{
     updade_at: Date
 
     constructor(){
-        if(!this.id) this.id = uuid()
+        if(!this.id) this.id = v4()
     }
 }
