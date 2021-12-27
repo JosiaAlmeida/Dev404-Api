@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,11 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Table } from "typeorm";
-export default class createUsers1640300932931 {
+Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
+class createUsers1640300932931 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.createTable(new Table({
+            yield queryRunner.createTable(new typeorm_1.Table({
                 name: "users",
                 columns: [
                     {
@@ -70,4 +72,5 @@ export default class createUsers1640300932931 {
         });
     }
 }
+exports.default = createUsers1640300932931;
 //# sourceMappingURL=1640300932931-createUsers.js.map

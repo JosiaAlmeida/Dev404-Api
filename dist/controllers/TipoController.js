@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,9 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import TipoServices from "../services/TipoServices";
-const service = new TipoServices();
-export default class TipoController {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const TipoServices_1 = __importDefault(require("../services/TipoServices"));
+const service = new TipoServices_1.default();
+class TipoController {
     ListAll(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const Types = yield service.ListType();
@@ -47,4 +52,5 @@ export default class TipoController {
         });
     }
 }
+exports.default = TipoController;
 //# sourceMappingURL=TipoController.js.map

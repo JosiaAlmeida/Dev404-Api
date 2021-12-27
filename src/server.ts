@@ -1,6 +1,6 @@
 import "dotenv/config"
 // import './util/module-alias';
-const express = require('express')
+import express from 'express'
 import 'reflect-metadata'
 import cors from 'cors'
 import routerUser from './Routes/userRoutes'

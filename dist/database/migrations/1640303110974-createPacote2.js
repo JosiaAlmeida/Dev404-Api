@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,11 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Table } from "typeorm";
-export default class createPacote21640303110974 {
+Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
+class createPacote21640303110974 {
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.createTable(new Table({
+            yield queryRunner.createTable(new typeorm_1.Table({
                 name: "pacote",
                 columns: [
                     {
@@ -82,4 +84,5 @@ export default class createPacote21640303110974 {
         });
     }
 }
+exports.default = createPacote21640303110974;
 //# sourceMappingURL=1640303110974-createPacote2.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,21 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import Jsonwebtoken from 'jsonwebtoken';
-import TypeORM from 'typeorm';
-import { UserRepositories } from '../Repositories/UserRepositories';
-import Bcryptjs from 'bcryptjs';
-import SuperUserRepositories from '../Repositories/SuperUserRepositories';
-import { classToPlain } from 'class-transformer';
-export default class UserOnlyNow {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const typeorm_1 = __importDefault(require("typeorm"));
+const UserRepositories_1 = require("../Repositories/UserRepositories");
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const SuperUserRepositories_1 = __importDefault(require("../Repositories/SuperUserRepositories"));
+const class_transformer_1 = require("class-transformer");
+class UserOnlyNow {
     execute(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userRepository = TypeORM.getCustomRepository(UserRepositories);
+            const userRepository = typeorm_1.default.getCustomRepository(UserRepositories_1.UserRepositories);
             const userExists = yield userRepository.findOneOrFail({
                 email
             });
             if (userExists.Dev === 'admin') {
-                const token = Jsonwebtoken.sign({
+                const token = jsonwebtoken_1.default.sign({
                     email: userExists.email
                 }, process.env.JWT_KEY_ADMIN, {
                     subject: userExists.id,
@@ -30,7 +35,7 @@ export default class UserOnlyNow {
                 return { userExists, token };
             }
             else if (userExists) {
-                const token = Jsonwebtoken.sign({
+                const token = jsonwebtoken_1.default.sign({
                     email: userExists.email
                 }, process.env.JWT_KEY, {
                     subject: userExists.id,
@@ -42,30 +47,30 @@ export default class UserOnlyNow {
     }
     CreateAdmin({ email, password, superKyUser }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const AdminCreate = TypeORM.getCustomRepository(SuperUserRepositories);
+            const AdminCreate = typeorm_1.default.getCustomRepository(SuperUserRepositories_1.default);
             if (superKyUser == process.env.Admin_Key) {
-                const pass = yield Bcryptjs.hash(password, 8);
+                const pass = yield bcryptjs_1.default.hash(password, 8);
                 const Admin = AdminCreate.create({ email, password: pass, });
                 yield AdminCreate.save(Admin);
-                return classToPlain(Admin);
+                return (0, class_transformer_1.classToPlain)(Admin);
             }
         });
     }
     LoginAdmin({ email, password, superKyUser }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const AdminCreate = TypeORM.getCustomRepository(SuperUserRepositories);
+            const AdminCreate = typeorm_1.default.getCustomRepository(SuperUserRepositories_1.default);
             const AdminExist = yield AdminCreate.findOne({ email });
-            const pass = yield Bcryptjs.compare(password, AdminExist.password);
+            const pass = yield bcryptjs_1.default.compare(password, AdminExist.password);
             if (AdminExist) {
                 if (superKyUser === process.env.Admin_Key) {
                     if (pass) {
-                        const token = Jsonwebtoken.sign({
+                        const token = jsonwebtoken_1.default.sign({
                             email: AdminExist.email
                         }, process.env.JWT_KEY_ADMIN, {
                             subject: AdminExist.id,
                             expiresIn: "7d"
                         });
-                        return classToPlain({ AdminExist, token });
+                        return (0, class_transformer_1.classToPlain)({ AdminExist, token });
                     }
                 }
                 else
@@ -76,4 +81,5 @@ export default class UserOnlyNow {
         });
     }
 }
+exports.default = UserOnlyNow;
 //# sourceMappingURL=UserOnlyNow.js.map

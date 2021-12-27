@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,44 +8,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, Entity } from "typeorm";
-import { v4 as uuid } from "uuid";
-import { Exclude } from 'class-transformer';
+Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
+const uuid_1 = require("uuid");
+const class_transformer_1 = require("class-transformer");
 let SuperUser = class SuperUser {
     constructor() {
         if (!this.id)
-            this.id = uuid();
+            this.id = (0, uuid_1.v4)();
         this.Dev = "true";
     }
 };
 __decorate([
-    PrimaryColumn(),
+    (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", String)
 ], SuperUser.prototype, "id", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], SuperUser.prototype, "email", void 0);
 __decorate([
-    Exclude(),
-    Column(),
+    (0, class_transformer_1.Exclude)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], SuperUser.prototype, "password", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], SuperUser.prototype, "Dev", void 0);
 __decorate([
-    CreateDateColumn(),
+    (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], SuperUser.prototype, "created_at", void 0);
 __decorate([
-    UpdateDateColumn(),
+    (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], SuperUser.prototype, "updated_at", void 0);
 SuperUser = __decorate([
-    Entity("SuperUser"),
+    (0, typeorm_1.Entity)("SuperUser"),
     __metadata("design:paramtypes", [])
 ], SuperUser);
-export default SuperUser;
+exports.default = SuperUser;
 //# sourceMappingURL=SuperUser.js.map
