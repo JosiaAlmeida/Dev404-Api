@@ -1,1 +1,1 @@
-web:yarn gogo
+web: npm run start
